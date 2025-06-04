@@ -604,6 +604,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937433647}
   m_CullTransparentMesh: 1
+--- !u!1 &1411714650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1411714653}
+  - component: {fileID: 1411714652}
+  - component: {fileID: 1411714651}
+  m_Layer: 0
+  m_Name: GroqAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1411714651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411714650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5fd37f4d44686459cee52706bf2dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whisperEndpoint: https://api.groq.com/openai/v1/audio/transcriptions
+  apiKey: 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
+  recorder: {fileID: 1411714652}
+--- !u!114 &1411714652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411714650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 031588bf656b2854397672ccadc647d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 10
+  sampleRate: 44100
+--- !u!4 &1411714653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411714650}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.482702, y: -0.027707696, z: 0.9667591}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1525941154
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +854,8 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 70487072}
-  - {fileID: 616811674}
   - {fileID: 1525941158}
   - {fileID: 2099547245}
+  - {fileID: 70487072}
+  - {fileID: 616811674}
+  - {fileID: 1411714653}
