@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &70487071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   apiKey: 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
-  prompt: Hello, Groq! What can you do?
+  userInput: Hello, Groq! What can you do?
 --- !u!4 &70487072
 Transform:
   m_ObjectHideFlags: 0
@@ -585,7 +585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &455715064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   apiKey: 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
-  prompt: Spawn a cube and make it red.
+  prompt: Spawn a sphere and make it red.
   model: llama-3.3-70b-versatile
 --- !u!4 &455715065
 Transform:

@@ -15,10 +15,10 @@ public class GroqToolRunner : MonoBehaviour
     private GroqApiClient groqApi;
     private List<Tool> tools;
 
-    async void Start()
+    private void Start()
     {
         groqApi = new GroqApiClient(apiKey);
-        tools = new List<Tool> { BuildSpawnCubeTool() };
+        tools = new List<Tool> { BuildSpawnCubeTool(), BuildSpawnSphereTool() };
     }
 
     [Button]
@@ -59,6 +59,54 @@ public class GroqToolRunner : MonoBehaviour
                     UnityMainThreadDispatcher.Instance().Enqueue(() =>
                     {
                         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        cube.transform.position = Vector3.zero;
+
+                        if (ColorUtility.TryParseHtmlString(color, out var parsedColor))
+                        {
+                            cube.GetComponent<Renderer>().material.color = parsedColor;
+                        }
+                        else if (TryGetColorByName(color, out var namedColor))
+                        {
+                            cube.GetComponent<Renderer>().material.color = namedColor;
+                        }
+                    });
+
+                    return JsonSerializer.Serialize(new { result = $"Cube created with color {color}" });
+                }
+            }
+        };
+    }
+
+    private Tool BuildSpawnSphereTool()
+    {
+        return new Tool
+        {
+            Type = "function",
+            Function = new Function
+            {
+                Name = "spawn_sphere",
+                Description = "Spawns a Unity sphere and colors it",
+                Parameters = new JsonObject
+                {
+                    ["type"] = "object",
+                    ["properties"] = new JsonObject
+                    {
+                        ["color"] = new JsonObject
+                        {
+                            ["type"] = "string",
+                            ["description"] = "Color name"
+                        }
+                    },
+                    ["required"] = new JsonArray { "color" }
+                },
+                ExecuteAsync = async (args) =>
+                {
+                    var jsonArgs = JsonDocument.Parse(args);
+                    var color = jsonArgs.RootElement.GetProperty("color").GetString();
+
+                    UnityMainThreadDispatcher.Instance().Enqueue(() =>
+                    {
+                        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                         cube.transform.position = Vector3.zero;
 
                         if (ColorUtility.TryParseHtmlString(color, out var parsedColor))
