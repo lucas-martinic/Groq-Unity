@@ -1,0 +1,47 @@
+# Groq-Unity 🧠🎮
+
+**Groq-Unity** is an open-source Unity integration for Groq's AI APIs.
+
+> 🚀 Built on top of [jgravelle/GroqApiLibrary](https://github.com/jgravelle/GroqApiLibrary), fully adapted for Unity with samples and MonoBehaviour support.
+
+---
+
+## ✨ Features
+
+- ✅ **Chat Completion** with Mixtral / LLaMA models
+- 🎙️ **Speech Synthesis (TTS)** using `playai-tts` voices
+- 🧾 **Transcription** using `whisper-large-v3`
+- 🧮 **Function Calling & Tool Use** from within Unity
+- 🔊 Built-in audio player for TTS & transcription demos
+- 🔧 Simple MonoBehaviour components for easy use in scenes
+
+---
+
+## 📦 Requirements
+
+- Unity 6+(tested)
+- A valid [Groq API Key](https://console.groq.com/)
+
+---
+
+## 🔧 Setup
+
+1. Clone or download this repository
+2. Open the Unity project or move `Assets/GroqUnity` into your own
+3. Add your Groq API Key in the relevant script or config field
+4. Run one of the sample scenes to get started
+
+---
+
+## 🧪 Samples Included
+
+| Feature        | Scene / Script                    | Description |
+|----------------|-----------------------------------|-------------|
+| 🔡 Chat         | `GroqChat.cs`                     | Simple text prompt and response using Mixtral |
+| 🗣️ TTS           | `GroqTTS.cs`                      | Uses `playai-tts` to generate speech from text and play it |
+| 🎧 Transcription| `WhisperTranscriber.cs`          | Record mic input and transcribe with `whisper-large-v3` |
+| 🧰 Tool Calling | `GroqToolSample.cs`              | Run a tool (e.g. spawn colored cubes) via structured function call |
+| 🎛️ Voice Enum   | `GroqTTS.cs`                 | Enum of all available voices for TTS selection in the Editor |
+
+---
+
