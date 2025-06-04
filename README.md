@@ -27,9 +27,8 @@
 ## 🔧 Setup
 
 1. Clone or download this repository
-2. Open the Unity project or move `Assets/GroqUnity` into your own
-3. Add your Groq API Key in the relevant script or config field
-4. Run one of the sample scenes to get started
+2. Add your Groq API Key in the relevant script or config field
+3. Run one of the sample scenes to get started
 
 ---
 
