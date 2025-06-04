@@ -1,36 +1,51 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text.Json.Nodes;
-using GroqApiLibrary; // Ensure this is compatible with Unity and included in your Assets
+using GroqApiLibrary;
+using NaughtyAttributes;
 
 public class GroqChat : MonoBehaviour
 {
-    [SerializeField] private string apiKey = "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";
+    [SerializeField] private string apiKey;
+    [SerializeField, TextArea] private string userInput = "Hello, Groq! What can you do?";
 
     private GroqApiClient groqApi;
+    private List<JsonObject> messageHistory = new List<JsonObject>();
 
-    void Start()
+    [Button]
+    void SendRequest()
     {
-        groqApi = new GroqApiClient(apiKey);
+        if (groqApi == null)
+            groqApi = new GroqApiClient(apiKey);
+
+        // Add new user message to history
+        messageHistory.Add(new JsonObject
+        {
+            ["role"] = "user",
+            ["content"] = userInput
+        });
+
         StartCoroutine(SendChatRequest());
     }
 
     private IEnumerator SendChatRequest()
     {
+        var messagesArray = new JsonArray();
+
+        foreach (var msg in messageHistory)
+        {
+            // Clone the message to avoid JsonNode "already has a parent" error
+            var clonedMsg = JsonNode.Parse(msg.ToJsonString())!.AsObject();
+            messagesArray.Add(clonedMsg);
+        }
+
         var request = new JsonObject
         {
             ["model"] = "llama-3.1-8b-instant",
-            ["messages"] = new JsonArray
-            {
-                new JsonObject
-                {
-                    ["role"] = "user",
-                    ["content"] = "Hello, Groq! What can you do?"
-                }
-            }
+            ["messages"] = messagesArray
         };
 
-        // Call async method and yield until it's done
         var task = groqApi.CreateChatCompletionAsync(request);
 
         while (!task.IsCompleted)
@@ -44,7 +59,20 @@ public class GroqChat : MonoBehaviour
         {
             var result = task.Result;
             string content = result?["choices"]?[0]?["message"]?["content"]?.ToString();
-            Debug.Log("Groq says: " + content);
+
+            if (!string.IsNullOrEmpty(content))
+            {
+                Debug.Log("Groq says: " + content);
+
+                // Clone the assistant message too before storing
+                var assistantMsg = new JsonObject
+                {
+                    ["role"] = "assistant",
+                    ["content"] = content
+                };
+                messageHistory.Add(assistantMsg);
+            }
         }
     }
+
 }

@@ -46,11 +46,12 @@ public class GroqTTS : MonoBehaviour
     private const string model = "playai-tts";
     [SerializeField] private PlayAIVoice selectedVoice = PlayAIVoice.Fritz_PlayAI;
     private const string responseFormat = "wav";
+    [SerializeField] private string prompt = "I love building and shipping new features for our students!";
 
     [Button]
     private async void Generate()
     {
-        await GenerateAndPlaySpeech("I love building and shipping new features for our users!");
+        await GenerateAndPlaySpeech(prompt);
     }
 
     public async Task GenerateAndPlaySpeech(string text)
