@@ -12,6 +12,7 @@ public class GroqVision : MonoBehaviour
     public RawImage rawImage; // Assign this in the Inspector
     [SerializeField] private string apiKey = "your_api_key_here";
     [SerializeField] private string model = "model_name";
+    [SerializeField] private string prompt = "Describe this image";
 
     private GroqApiClient groqApi;
 
@@ -61,8 +62,6 @@ public class GroqVision : MonoBehaviour
 
         byte[] imageBytes = texture2D.EncodeToJPG(); // or EncodeToPNG()
         string base64Image = Convert.ToBase64String(imageBytes);
-
-        string prompt = "Describe this image";
 
         var task = groqApi.CreateVisionCompletionWithTempBase64ImageAsync(base64Image, prompt, model);
 
