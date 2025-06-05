@@ -20,7 +20,7 @@ namespace GroqApiLibrary
         private const string TranscriptionsEndpoint = "/audio/transcriptions";
         private const string TranslationsEndpoint = "/audio/translations";
 
-        private const string VisionModels = "llama-3.2-90b-vision-preview,llama-3.2-11b-vision-preview,meta-llama/llama-4-scout-17b-16e-instruct";
+        private const string VisionModels = "meta-llama/llama-4-scout-17b-16e-instruct,meta-llama/llama-4-maverick-17b-128e-instruct";
         private const int MAX_IMAGE_SIZE_MB = 20;
         private const int MAX_BASE64_SIZE_MB = 4;
 
