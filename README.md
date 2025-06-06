@@ -29,6 +29,7 @@
 1. Clone or download this repository
 2. Add your Groq API Key in the relevant script or config field
 3. Open the sample scene, enable one of the 5 sample gameobjects, hit play.
+4. For TTS sample, go to https://console.groq.com/playground?model=playai-tts and accept the terms.
 
 ---
 
